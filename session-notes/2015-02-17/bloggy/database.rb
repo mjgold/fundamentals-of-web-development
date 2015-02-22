@@ -1,5 +1,6 @@
 require 'data_mapper'
 
+DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'sqlite:bloggy.db')
 
 class Blog
@@ -11,10 +12,6 @@ class Blog
   property :created_at, DateTime, required: true
 
   belongs_to :author, 'User'
-
-  before :create do
-    self.created_at = DateTime.now
-  end
 end
 
 class User
@@ -22,6 +19,7 @@ class User
 
   property :id, Serial
   property :username, String, required: true, unique: true
+  property :password, String, required: true
 
   has n, :blogs, parent_key: [:id], child_key: [:author_id]
 end

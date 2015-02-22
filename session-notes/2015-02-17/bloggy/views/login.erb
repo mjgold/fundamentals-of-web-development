@@ -1,0 +1,21 @@
+<html>
+<head><title>Login form</title></head>
+<body>
+
+  <%= @errors if @errors %>
+
+  <form action="/login" method="POST">
+    <label>Username
+      <input id="username" name="username" type="text" value=''>
+    </label>
+    <br>
+
+    <label>Password
+      <input id="password" name="password" type="password" value=''>
+    </label>
+
+    <br>
+    <button type='submit'>Submit</button>
+  </form>
+</body>
+</html>
